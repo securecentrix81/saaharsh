@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Calvin & Saharsh: The Confession</title>
+  <title>Calvin &amp; Saharsh: A Little Saga (Hydrated Edition)</title>
   <style>
     :root {
       color-scheme: light dark;
@@ -19,22 +19,22 @@
       justify-content: center;
     }
     .game {
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.55);
       border-radius: 16px;
-      max-width: 700px;
+      max-width: 780px;
       width: 90%;
       padding: 24px 28px 20px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.5);
       backdrop-filter: blur(10px);
     }
     .title {
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       font-weight: 700;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
     .subtitle {
       font-size: 0.9rem;
-      opacity: 0.75;
+      opacity: 0.8;
       margin-bottom: 18px;
     }
     .scene-text {
@@ -72,7 +72,7 @@
     .meta {
       margin-top: 14px;
       font-size: 0.8rem;
-      opacity: 0.7;
+      opacity: 0.75;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -93,8 +93,8 @@
 </head>
 <body>
   <div class="game">
-    <div class="title">Calvin & Saharsh</div>
-    <div class="subtitle">A tiny choose-your-own-love-story</div>
+    <div class="title">Calvin &amp; Saharsh</div>
+    <div class="subtitle">A small saga about years, almosts, and one real confession (feat. constant hydration)</div>
     <div class="scene-text" id="text"></div>
     <div class="choices" id="choices"></div>
     <div class="meta">
@@ -105,331 +105,843 @@
 
   <script>
     const story = {
+      // ACT 1 – THE FIRST THREAD
       start: {
         text:
-`Calvin has known Saharsh for a while now.
+`Years from now, Calvin will remember the exact color of the sky the night he finally confessed to Saharsh.
 
-It started with small jokes in class, then long conversations online,
-and somewhere along the way Calvin realized:
+But sagas don’t start with confessions.
+They start with something small. Ordinary. Easy to overlook.
 
-This isn’t just a friendship crush anymore.
-
-Tonight, Calvin has decided: *I’m going to tell Saharsh how I feel.*`,
+For Calvin, it began the first time he saw Saharsh.`,
         choices: [
-          { text: "Plan a casual walk and confess then.", next: "walk_plan" },
-          { text: "Invite Saharsh for coffee after class.", next: "coffee_invite" },
-          { text: "Send a heartfelt message instead.", next: "text_plan" }
+          { text: "Orientation day, in a crowded auditorium.", next: "meet_orientation" },
+          { text: "A quiet afternoon in the campus library.", next: "meet_library" },
+          { text: "The chaos of the computer lab before semester start.", next: "meet_lab" }
         ]
       },
 
-      walk_plan: {
+      meet_orientation: {
         text:
-`Calvin types:
+`The auditorium is loud and buzzing with nervous energy.
 
-“Hey, want to go for a walk later? Need some fresh air after today 😅”
+Calvin adjusts the reusable water bottle he’s clutching—he never goes anywhere without a drink.
 
-Saharsh replies almost instantly:
+He scans the rows and notices someone alone near the middle:
+dark hair, thoughtful eyes, fiddling with the corner of a notebook.
 
-“Yeah, I’d like that. 7 pm?”`,
+The name tag reads: “Saharsh”.
+
+For a second, their eyes meet. Calvin’s heart does a tiny, inexplicable flip.`,
         choices: [
-          { text: "Say yes and try to stay calm.", next: "walk_meet" },
-          { text: "Panic and try to reschedule.", next: "walk_reschedule" }
+          { text: "Sit down next to him and introduce yourself.", next: "first_thread_bold" },
+          { text: "Sit a row behind and hope he starts the conversation.", next: "first_thread_shy" }
         ]
       },
 
-      walk_reschedule: {
+      meet_library: {
         text:
-`Calvin starts to type “Actually, can we–” and then stops.
+`The library smells like dust and coffee.
 
-If he keeps delaying this, he might never say it.
+Calvin balances a cup of iced coffee in one hand—he is somehow always holding some kind of drink—while hunting for a textbook.
 
-He deletes the message and simply replies:
+He turns the corner and almost bumps into someone
+already reaching for the same shelf.
 
-“7 works. See you then.”`,
+“Sorry!” they both say at the same time.
+
+The stranger laughs, warm and easy. “Guess we’re both desperate for this class.”
+The sticker on his laptop reads: “Hi, I’m Saharsh.”`,
         choices: [
-          { text: "Take a deep breath and go to meet Saharsh.", next: "walk_meet" }
+          { text: "Make a joke and ask his name anyway.", next: "first_thread_bold" },
+          { text: "Smile awkwardly and let him take the book first.", next: "first_thread_shy" }
         ]
       },
 
-      walk_meet: {
+      meet_lab: {
         text:
-`The sky is turning orange as Calvin meets Saharsh.
+`The computer lab is a mess of tangled cables and people arguing with printers.
 
-They walk side by side, talking about random things:
-music, memes, and how fast time seems to be moving.
+Calvin sets down his ever-present water bottle beside the keyboard and wrestles with a login error, frustrated, when a voice beside him says,
+“You have to hit Ctrl+Alt+F2, then the system stops being dramatic.”
 
-There’s a comfortable silence.
-
-Calvin’s heart is racing.
-
-This is the moment.`,
+He looks over. The guy is grinning at his own joke, badge swinging: “Saharsh”.`,
         choices: [
-          { text: "Be direct: “I like you. A lot.”", next: "confess_direct" },
-          { text: "Start soft: “Can I tell you something kind of scary?”", next: "confess_soft" }
+          { text: "Laugh and ask him to show you how it works.", next: "first_thread_bold" },
+          { text: "Mutter thanks and try to fix it yourself.", next: "first_thread_shy" }
         ]
       },
 
-      coffee_invite: {
+      first_thread_bold: {
         text:
-`Calvin asks after class, trying to sound casual:
+`Calvin decides not to overthink it.
 
-“Hey, want to grab coffee? I could really use a break.”
+He shifts his drink to the other hand, leans in, offers a small smile, and says, “I’m Calvin.”
 
-Saharsh smiles. “Sure, that actually sounds great.”`,
+The reply comes with that same warm, slightly crooked smile:
+“I’m Saharsh. Nice to finally meet my first friend in this chaos.”
+
+It’s nothing dramatic. Just a first hello.
+
+But every saga needs a first hello.`,
         choices: [
-          { text: "Talk about memories first, then confess.", next: "coffee_memories" },
-          { text: "Just blurt it out over coffee.", next: "coffee_blurt" }
+          { text: "Keep talking. Ask about his classes and interests.", next: "early_bonding" }
         ]
       },
 
-      coffee_memories: {
+      first_thread_shy: {
         text:
-`They sit by the window, warm mugs between their hands.
+`Calvin hesitates, fingers tightening around the bottle he always seems to be holding, and the moment slips a little.
 
-Calvin laughs. “Remember when we first talked? I thought you didn’t like me.”
+But fate is stubborn.
 
-Saharsh shakes his head. “Are you kidding? I was just shy. You were the one who seemed cool.” 
+A few minutes later, someone asks for a pen, a seat, a bit of help with a form,
+and somehow Calvin and Saharsh end up answering together, laughing at the same thing.
 
-Calvin feels their courage growing.`,
+“I’m Saharsh, by the way,” he says at last.
+
+“Calvin,” he replies, heart strangely light.
+
+It isn’t smooth, but it’s theirs.`,
         choices: [
-          { text: "Turn the moment serious and confess.", next: "confess_soft" },
-          { text: "Say it playfully, like a joke… at first.", next: "confess_playful" }
+          { text: "Stay nearby and let the conversation grow slowly.", next: "early_bonding" }
         ]
       },
 
-      coffee_blurt: {
+      early_bonding: {
         text:
-`The words come out before Calvin can overthink:
+`Days turn into weeks. Soon it’s normal to see them together.
 
-“So, um… I like you. Like *really* like you. More than a friend.”
+There’s almost always a drink in Calvin’s hand—tea, coffee, water—
+and Saharsh has started teasing him that “constant hydration” is his whole personality.
 
-There’s a heartbeat of silence.
+Sharing lecture notes. Swapping songs. Trading memes during boring talks.
 
-Then another.`,
+There’s an easy rhythm to it, like they’ve been orbiting each other for a lot longer.`,
         choices: [
-          { text: "Wait, don’t say anything else. Just look at Saharsh.", next: "reaction_slow" },
-          { text: "Nervously ramble to fill the silence.", next: "ramble" }
+          { text: "Their thing becomes late-night study sessions.", next: "early_bonding_memory" },
+          { text: "Their thing becomes walking and talking after class.", next: "early_bonding_memory" },
+          { text: "Their thing becomes teaming up on every group project.", next: "early_bonding_memory" }
         ]
       },
 
-      text_plan: {
+      early_bonding_memory: {
         text:
-`Calvin stares at the blank message screen.
+`Whatever shape it takes—notes spread over café tables, footsteps echoing on quiet paths,
+or code windows glowing at 2am—little rituals form between Calvin and Saharsh.
 
-Typing is easier than talking… but also easier to overthink.
+Calvin always shows up with a drink, to the point where people joke that if he’s empty-handed, something is seriously wrong.
 
-He writes, deletes, rewrites. Eventually, a draft appears:`,
+An inside joke here. A shared silence there.
+
+At first, it’s just friendship. Solid, simple, grounding.
+
+But already, without either of them realizing,
+this is the first year of a much longer story.`,
         choices: [
-          { text: "Be simple and honest.", next: "text_simple" },
-          { text: "Be poetic and dramatic.", next: "text_poetic" }
+          { text: "Let time skip forward to the next chapter.", next: "year_two_start" }
         ]
       },
 
-      text_simple: {
+      // ACT 2 – YEARS OF ALMOSTS
+      year_two_start: {
         text:
-`Calvin types:
+`Year Two arrives almost without warning.
 
-“I really value you, and I think I’ve started to like you as more than a friend.
-I’m scared to say this, but I’d regret never telling you.”
+By now, everyone just assumes “Calvin and Saharsh” is one unit.
+If someone invites one, they automatically add the other.
 
-Finger hovering over “Send”…`,
+Calvin walks into rooms with a drink already in hand and a story on his lips;
+Saharsh rolls his eyes and steals a sip every time.
+
+They have playlists made for each other. 
+Shared notes in the cloud.
+A chat almost always open on their phones.
+
+One cool evening, they end up sitting under a dim campus lamp,
+conversations wandering from classes to fears to the future.`,
         choices: [
-          { text: "Press send.", next: "sent_text" },
-          { text: "Change your mind and ask to meet in person instead.", next: "meet_instead" }
+          { text: "Calvin opens up about something personal he’s never told anyone here.", next: "year_two_vulnerable" },
+          { text: "Calvin keeps the conversation light, scared of going too deep.", next: "year_two_light" }
         ]
       },
 
-      text_poetic: {
+      year_two_vulnerable: {
         text:
-`Calvin types:
+`The words are clumsy, but honest.
 
-“Somewhere between our late-night talks and your terrible jokes,
-I realized my favorite part of the day is just… you.
+Calvin talks about the weight of expectations, the way anxiety knots in his chest,
+the quiet fear that if people knew all of him, they’d disappear.
 
-I like you. A lot.”
+His fingers circle the rim of the cup he’s holding, condensation cold against his skin,
+something steady to anchor him.
 
-It’s dramatic, but it’s true.`,
+He waits for the shift—that subtle pulling away.
+
+Instead, Saharsh just listens. Really listens.
+
+“That sounds heavy,” he says softly. “I’m glad you trusted me with it.
+For what it’s worth… I’m not going anywhere.”
+
+Something rearranges itself quietly inside Calvin’s chest.`,
         choices: [
-          { text: "Send it before you can overthink.", next: "sent_text" },
-          { text: "Save it and invite Saharsh to talk in person.", next: "meet_instead" }
+          { text: "Notice how safe being with Saharsh feels.", next: "realization" }
         ]
       },
 
-      meet_instead: {
+      year_two_light: {
         text:
-`Calvin deletes the message and smiles to himself.
+`Calvin feels the words just beneath the surface.
 
-No more hiding behind screens.
+The family stuff. The hidden fears. The complicated crushes he’s never named.
 
-He messages instead:
+He lifts his drink for a sip instead, using the familiar motion as a shield,
+and jokes about professors and cafeteria food,
+carefully skimming above the deeper parts of himself.
 
-“Can we talk later? In person. I have something important to tell you.”`,
+Even so, when the wind picks up, Saharsh nudges his shoulder and asks,
+“Are you really okay, though? You seem… distant sometimes.”
+
+“I’m fine,” Calvin lies.
+
+Saharsh doesn’t push. He just stays. That, somehow, is even louder than questions.`,
         choices: [
-          { text: "Go meet and confess face to face.", next: "walk_meet" }
+          { text: "Realize how much it means that he stays, even without explanations.", next: "realization" }
         ]
       },
 
-      sent_text: {
+      realization: {
         text:
-`Message sent.
+`It doesn’t hit Calvin all at once.
 
-The typing indicator appears.
-Disappears.
-Appears again.
+It happens in pieces:
+the way his chest loosens when Saharsh laughs,
+the way his day tilts brighter when a message from him pops up,
+the way a casual “made it home safe?” text lingers in his mind.
 
-Every second feels like an hour.
+One night, scrolling up through months of messages, cup of tea going cold beside him, it finally clicks:
+this isn’t just a friend crush.
 
-Finally, a reply:`,
+“Oh,” Calvin whispers to the empty room. “Oh.”
+
+Somewhere between late-night talks and shared silence,
+he’s fallen in love with Saharsh.`,
         choices: [
-          { text: "Open it slowly, heart pounding.", next: "text_reply" }
+          { text: "Try to ignore it and act normal.", next: "year_three_start" },
+          { text: "Quietly start planning to confess “someday”.", next: "year_three_start" },
+          { text: "Decide to just enjoy the moments for now.", next: "year_three_start" }
         ]
       },
 
-      text_reply: {
+      // ACT 3 – DISTANCE & DOUBT
+      year_three_start: {
         text:
-`“Wow… I wasn’t expecting that.
+`Year Three doesn’t ask permission before changing everything.
 
-I really care about you too, Calvin.
-Can we talk about this in person? I think I might feel the same way.”`,
+Internships. New responsibilities. Family calls. Extra credits.
+Life pulls in a dozen different directions at once.
+
+Texts get answered a little slower.
+Plans get cancelled a little more often.
+
+Calvin still shows up with a drink in his hand,
+but sometimes there’s no one across the table to steal a sip from it.
+
+One week, he realizes they haven’t had a real conversation in days.
+The empty space where their banter used to be feels too loud.`,
         choices: [
-          { text: "Meet up and say it out loud this time.", next: "final_confession" }
+          { text: "Calvin fights the drift and keeps reaching out.", next: "year_three_reach" },
+          { text: "Calvin tells himself Saharsh is just busy and quietly pulls back.", next: "year_three_drift" }
         ]
       },
 
-      confess_direct: {
+      year_three_reach: {
         text:
-`Calvin takes a breath.
+`Calvin sends links, memes, “this reminded me of you” messages.
+He asks to meet up, even if it’s just for twenty minutes between things.
 
-“I like you, Saharsh. Not just as a friend. I’ve liked you for a while now.”
+Sometimes Saharsh says yes. Sometimes he replies hours later with,
+“Sorry, got swamped, rain check?”
 
-"Also I'm like really wet."`,
+The more Calvin tries, the more he worries he’s being… too much.
+
+He stares at the condensation ring his drink leaves on the table and wonders
+if he should stop trying so hard.
+
+Still, he’d rather risk that than let this fade.`,
         choices: [
-          { text: "Stand your ground and wait for a response.", next: "reaction_slow" }
+          { text: "A small misunderstanding finally boils over.", next: "year_three_argument_soft" }
         ]
       },
 
-      confess_soft: {
+      year_three_drift: {
         text:
-`Calvin’s voice is soft.
+`Calvin puts his phone face down and wraps both hands around his drink.
 
-“Can I tell you something kind of scary?”
+If he’s the only one trying, maybe he should stop.
+Give space. Be “chill”.
 
-Saharsh looks over, curious. “Yeah. Of course.”
+Days blur.
+He laughs with other friends, does his work, listens to music—
+but every time he spots Saharsh across campus with a new group,
+something twists in his chest.
 
-“I… I’ve started to like you as more than a friend.”
-
-"Also I'm wet."`,
+When they do talk again, it’s stiffer. Careful. Careless in all the wrong places.`,
         choices: [
-          { text: "Watch Saharsh’s reaction.", next: "reaction_slow" }
+          { text: "One awkward conversation tilts into an argument.", next: "year_three_argument_sharp" }
         ]
       },
 
-      confess_playful: {
+      year_three_argument_soft: {
         text:
-`Calvin chuckles nervously.
+`It starts stupidly.
 
-“So, hypothetically, if I said I might be a little bit in love with you…
-like, just a tiny bit… what would you say?”
+A half-read message. A late reply. A cancelled plan.
 
-"Can you tell that I'm wet?"`,
+“I just feel like I don’t see you anymore,” Calvin says,
+trying to sound casual and failing.
+
+He picks at the edge of his bottle’s label, plastic flaking beneath his nails.
+
+“I’m trying,” Saharsh replies, tired. “I’m just… juggling a lot.”
+
+Neither of them is really angry—not at each other, anyway—
+but the frustration spills out sideways.
+
+After a while, the sentences soften.
+“I don’t want to lose this,” Calvin admits.
+
+“You won’t,” Saharsh says, too fast, like he’s afraid of it too.`,
         choices: [
-          { text: "Admit you’re not actually joking.", next: "reaction_playful" }
+          { text: "Later that night, they end up talking for hours.", next: "year_three_night_talk" }
         ]
       },
 
-      ramble: {
+      year_three_argument_sharp: {
         text:
-`Words spill out.
+`It’s supposed to be a quick check-in.
 
-“I mean, if you don’t like me back it’s totally fine, we can pretend I never said anything—
-I just didn’t want to keep this secret and— yeah, I'm still wet- ” 
+Instead, they step on landmines.
 
-“Calvin,” Saharsh interrupts gently.`,
+“So you have time for everyone else but not me?” slips out of Calvin’s mouth
+before he can stop it.
+
+“That’s not fair,” Saharsh shoots back. “You’ve been distant too.”
+
+Hurt and defensiveness pile up on top of all the things they haven’t said:
+I miss you. I need you. I’m scared of wanting you this much.
+
+There’s a long silence after the last sharp word.
+
+Calvin takes a slow sip from his drink just to have something to do with his hands.
+
+“I don’t want this to be how we are,” he says quietly.
+
+“Me neither,” Saharsh answers. “Can we… try again?”`,
         choices: [
-          { text: "Go quiet and listen.", next: "reaction_slow" }
+          { text: "That night, they decide to really talk.", next: "year_three_night_talk" }
         ]
       },
 
-      reaction_slow: {
+      year_three_night_talk: {
         text:
-`For a moment, Saharsh just looks at Calvin.
+`The call that night isn’t rushed.
 
-Then a small, nervous smile appears.
+Hours stretch as they talk in the half-dark:
+about pressure, burnout, fear of failing, and what it means to rely on someone.
 
-“I had a feeling,” he says quietly. “I was kind of hoping I was right.”`,
+Calvin nurses the same cup of tea for so long it goes cold,
+but he doesn’t get up to change it. The conversation feels too fragile to break.
+
+At one point, he almost says,
+“I’m scared because I’m in love with you.”
+
+The words rise to his tongue, trembling.`,
         choices: [
-          { text: "Ask, “What do you mean?”", next: "reaction_deepen" },
-          { text: "Stay silent and let him keep talking.", next: "reaction_deepen" }
+          { text: "Let the sentence almost escape, then swallow it back.", next: "year_three_promise" },
+          { text: "Hint at it—“there’s something big I want to tell you one day.”", next: "year_three_promise" }
+        ]
+      },
+
+      year_three_promise: {
+        text:
+`Calvin doesn’t say everything.
+
+But he says enough that the air between them feels different.
+More honest. More fragile. Stronger, somehow.
+
+“I don’t ever want to lose you,” he says instead.
+
+“You won’t,” Saharsh replies. There’s a pause. “And… when you’re ready,
+tell me the thing. Whatever it is.”
+
+They don’t know it yet,
+but this is the last year before everything changes again.`,
+        choices: [
+          { text: "Let time pull them into their final year.", next: "year_four_start" }
+        ]
+      },
+
+      // ACT 4 – THE CHOICE
+      year_four_start: {
+        text:
+`Final year arrives with a stack of deadlines and a countdown clock.
+
+People talk about jobs, grad school, visas, moving away.
+For the first time, “after this” feels real.
+
+One afternoon, sitting on the campus steps,
+Calvin balances a drink on his knee while Saharsh says it lightly, like it doesn’t matter much:
+
+“So… I might be moving to another city. Maybe even another country, if this works out.” 
+
+Something inside Calvin drops.`,
+        choices: [
+          { text: "Decide you have to confess before everything scatters.", next: "year_four_now" },
+          { text: "Tell yourself you’ll wait until things are ‘more stable’.", next: "year_four_wait" }
+        ]
+      },
+
+      year_four_now: {
+        text:
+`Calvin counts invisible milestones in his head.
+
+Last semester. Last club meeting. Last festival.
+How many more sunsets will they share like this?
+
+He stares at the reflection of his drink in the glass door,
+watching it blur as his eyes sting.
+
+The thought of letting Saharsh leave without ever knowing the truth
+suddenly feels unbearable.
+
+“I’m going to tell him,” Calvin thinks, heart wild.
+
+Not someday. Now. While there’s still time to hear the answer in person.`,
+        choices: [
+          { text: "Plan something a little special—a rooftop under the night sky.", next: "rooftop_plan" },
+          { text: "Keep it simple—an ordinary day at your usual café.", next: "cafe_plan" }
+        ]
+      },
+
+      year_four_wait: {
+        text:
+`“I’ll tell him later,” Calvin decides.
+
+After exams. After applications. After the move. 
+When life is calmer. When things make more sense.
+
+He takes a long sip from his drink, using the familiar motion
+to soothe the unfamiliar fear.
+
+He repeats it like a promise:
+Later. Later. Later.
+
+Then one evening, Saharsh messages:
+“Got the abroad position. Leaving sooner than I thought.”`,
+        choices: [
+          { text: "Panic, then realize ‘later’ is here whether you’re ready or not.", next: "year_four_push" }
+        ]
+      },
+
+      year_four_push: {
+        text:
+`The countdown shrinks from months to weeks to days.
+
+Suitcases appear. Farewell plans bloom.
+Every moment with Saharsh now hums with urgency.
+
+Calvin scrolls through years of photos—cafés, study rooms, blurry sunsets,
+his own hand in half of them holding some kind of drink—and realizes
+there is no “perfect moment”.
+
+Only this one.`,
+        choices: [
+          { text: "Ask to meet in person and finally say it.", next: "rooftop_plan" },
+          { text: "Write it all down in a long, honest letter.", next: "letter_plan" }
+        ]
+      },
+
+      rooftop_plan: {
+        text:
+`Calvin convinces Saharsh to meet on the old campus rooftop.
+
+It’s quiet up here, a little chilly. The city glows below them,
+a scatter of lights like a second starfield.
+
+Calvin sets two take-out cups on the ledge between them—because of course
+he brought drinks—and they talk about nothing for a while:
+old memories, stupid inside jokes,
+the professors they definitely won’t miss.
+
+Calvin’s throat is dry. His heart won’t slow down.
+
+It’s now or never.`,
+        choices: [
+          { text: "Start soft, weaving the confession into shared memories.", next: "rooftop_confess_soft" },
+          { text: "Take a breath and say it clearly, all at once.", next: "rooftop_confess_direct" }
+        ]
+      },
+
+      cafe_plan: {
+        text:
+`The café near campus has seen almost every version of them:
+tired, stressed, laughing, half-asleep, overcaffeinated.
+
+They take the same corner table as always.
+Calvin orders their usual drinks without even asking—he knows what Saharsh likes by heart now.
+
+Outside, people rush past.
+Inside, time folds in on itself for just the two of them.`,
+        choices: [
+          { text: "Confess gently, through nostalgia and ‘remember when’ stories.", next: "cafe_confess_soft" },
+          { text: "Turn it into a joke first, then drop the punchline: it’s real.", next: "cafe_confess_playful" }
+        ]
+      },
+
+      letter_plan: {
+        text:
+`The cursor blinks at the top of an empty page.
+
+Calvin takes a sip from his ever-present glass of water and starts typing,
+deleting, typing again,
+until slowly the truth spills out:
+
+how it began, how it grew, how terrifying it is to love someone this much,
+and how impossible it feels to let him leave without knowing.
+
+By the end, his hands are shaking.
+
+The letter is too long and too honest and exactly right.`,
+        choices: [
+          { text: "Print it and give it to Saharsh to read while you’re there.", next: "letter_give" },
+          { text: "Schedule it to send after he’s already on his way.", next: "letter_late" }
+        ]
+      },
+
+      rooftop_confess_soft: {
+        text:
+`Calvin watches the wind tug at Saharsh’s hair, the faraway glow of traffic below.
+
+He wraps his hands around the warmth of his cup, steadying himself.
+
+“Do you remember,” he starts quietly, 
+“how we met? How everything felt like chaos and you still made me feel… steady?”
+
+Saharsh laughs. “Yeah. I’m glad we survived all that.”
+
+Calvin forces himself to keep going.
+
+“These past years—late nights, bad coffee, all of it—
+they’re my favorite parts of this whole place. Because they’re with you.
+
+Somewhere along the way, it stopped being just friendship for me.”
+
+His voice wavers. “I’m in love with you, Saharsh.”`,
+        choices: [
+          { text: "Wait and watch his reaction.", next: "reaction_core" }
+        ]
+      },
+
+      rooftop_confess_direct: {
+        text:
+`The words burn a hole in Calvin’s tongue.
+
+He sets his drink aside so he doesn’t spill it from how hard his hands are shaking,
+and lets them out.
+
+“I’m in love with you,” he says, cutting through the small talk.
+“No jokes. No metaphors. I’m just… in love with you, Saharsh.”
+
+The night seems to hold its breath.
+
+Saharsh blinks, caught off guard,
+searching Calvin’s face like he’s trying to make sure this is real.`,
+        choices: [
+          { text: "Stay still. Let the silence stretch.", next: "reaction_core" }
+        ]
+      },
+
+      cafe_confess_soft: {
+        text:
+`Calvin traces patterns on his mug.
+
+“Do you remember that time we pulled an all-nighter here
+and you tried to convince me that instant noodles count as a personality trait?”
+
+Saharsh grins. “Still a valid argument.”
+
+“It’s just…” Calvin swallows. “All those nights, walks, messages…
+You became my favorite part of every day without me noticing.
+
+Somewhere along the line, I stopped thinking of you as just my best friend.”
+
+He looks up, meeting his eyes.
+
+“I’m in love with you, Saharsh.”`,
+        choices: [
+          { text: "Let the words hang between you.", next: "reaction_core" }
+        ]
+      },
+
+      cafe_confess_playful: {
+        text:
+`Calvin forces his voice to sound casual, fingers wrapped around his drink.
+
+“So, hypothetically,” he says, “if your best friend told you
+they were stupidly, dramatically in love with you… what would you say?”
+
+Saharsh snorts. “Hypothetically? I’d say that sounds like you.
+Overdramatic as always.”
+
+Calvin’s heart thuds. He takes a breath.
+
+“It’s not hypothetical,” he says quietly.
+“I’m in love with you. For real.”`,
+        choices: [
+          { text: "Watch his expression shift from joking to serious.", next: "reaction_playful" }
+        ]
+      },
+
+      letter_give: {
+        text:
+`They meet one last time before the move,
+hands colder than the air around them.
+
+Calvin arrives with a drink in one hand and folded pages in the other.
+
+“I wrote something,” he says, pulse racing.
+“I’m better at words when I don’t have to say them out loud.”
+
+He presses the letter into Saharsh’s hand.
+
+“Read it when you’re ready. But… it’s important.”
+
+Later, alone in his room, 
+Calvin imagines Saharsh’s eyes moving over every confession,
+every carefully chosen truth.`,
+        choices: [
+          { text: "Wait for his reply, heart in your throat.", next: "reaction_letter" }
+        ]
+      },
+
+      letter_late: {
+        text:
+`The plane is already in the air when the email leaves Calvin’s outbox.
+
+Subject line: “The thing I was always afraid to say.”
+
+He doesn’t wait for the message to send.
+He sets his glass of water on the desk, turns off his phone,
+and sits in the quiet of his room,
+suddenly aware of how big the world is and how small he feels in it.
+
+By the time he turns his phone back on, 
+there’s a new email at the top of his inbox.`,
+        choices: [
+          { text: "Open the message from Saharsh.", next: "reaction_future" }
+        ]
+      },
+
+      // ACT 4.5 – REACTIONS
+      reaction_core: {
+        text:
+`For a moment, the world narrows to just the space between them.
+
+Saharsh’s mouth opens, closes. His cheeks are pink,
+eyes shining in the low light.
+
+“I… Calvin,” he starts, then laughs once,
+a fragile, disbelieving sound.
+
+“I thought it was just me,” he admits. “For so long.”`,
+        choices: [
+          { text: "Ask, “Just you what?”", next: "deepen" },
+          { text: "Stay quiet, letting him fill the silence.", next: "deepen" }
         ]
       },
 
       reaction_playful: {
         text:
-`Saharsh laughs, a little too quickly.
+`The joke dissolves between them.
 
-“Hypothetically? I’d say… that’s not really surprising.”
+Saharsh stares for a heartbeat, then another.
+His voice is softer when he speaks again.
 
-Calvin meets his eyes. “It’s not hypothetical.”`,
+“You picked a really dramatic way to tell me,” he says,
+“but… I guess that fits, doesn’t it?”
+
+His hand is shaking slightly as he sets his cup down.
+
+“Because I’ve been in love with you too, Calvin.
+I just didn’t know if I was allowed to say it.”`,
         choices: [
-          { text: "Wait for Saharsh to answer.", next: "reaction_deepen" }
+          { text: "Let relief crash over you and really listen.", next: "deepen" }
         ]
       },
 
-      reaction_deepen: {
+      reaction_letter: {
         text:
-`Saharsh takes a breath.
+`The reply is longer than Calvin expected.
 
-“Calvin… I like you too. I’ve been scared to say anything.
+He reads it once, then again, heart pounding harder with every line.
 
-You mean a lot to me. More than just ‘friend a lot’.”`,
+“I had to sit down halfway through your letter,” it says.
+“Because it felt like you had been living inside my head this whole time.
+
+I kept waiting for you to pull away. 
+To decide I was too much or not enough.
+
+But you were falling too.
+And I… I’ve been in love with you for a long time, Calvin.”`,
         choices: [
-          { text: "Smile in relief and confess clearly one more time.", next: "final_confession" }
+          { text: "Ask to call, to hear his voice as he says it.", next: "deepen" }
         ]
       },
 
-      final_confession: {
+      reaction_future: {
         text:
-`Everything slows down for a moment.
+`The email opens with three words:
 
-Calvin’s voice is steady now.
+“I knew it.”
 
-“Okay, then… let me say it properly.
+Then:
 
-I’m in love with you, Saharsh.” 
+“I didn’t know for sure, obviously. But I hoped.
+Every time you stayed up late with me. Every time you checked in.
+Every time you made even the smallest thing feel less scary.
 
-Saharsh’s eyes soften.
+I’ve been in love with you too, Calvin.
+I just thought I’d have to carry it quietly.”
 
-“Good,” he whispers, smiling. “Because I’m in love with you too.” 
+There’s a final line:
 
-The world outside keeps moving—cars, people, time—
-but for a little while, it feels like it’s just the two of them,
-hearts finally speaking the same language.
-
-Calvin says calmly: I'm like really wet right now.`,
+“Can we talk? This saga doesn’t feel over to me.”`,
         choices: [
-          { text: "Stay together a little longer in this moment.", next: "epilogue" }
+          { text: "Step into a new chapter—this time, long-distance but honest.", next: "epilogue_long_distance" }
         ]
       },
 
-      epilogue: {
+      // ACT 5 – EPILOGUES
+      deepen: {
         text:
-`Later, when Calvin looks back, he won’t remember every word.
+`Time blurs around the edges.
 
-He’ll remember the way Saharsh looked at him.
-The warmth in his chest.
-The quiet relief of being fully seen and still chosen.
+There are a lot of words and also very few:
+how long it’s been, how scared they both were,
+how close they came to never saying anything.
 
-No matter which path led here,
-they found their way to each other.
+At some point, hands find each other—
+awkwardly at first, then steadier.
 
-Calvin was indeed very wet.
+A forgotten drink sits nearby, growing warm or cold,
+no longer needed as a distraction.
 
-— The End —`,
+“I don’t know what the future looks like,” Calvin says.
+“Different cities, time zones, all of it…”
+
+“Then we’ll figure it out bit by bit,” Saharsh replies.
+“I just know I want you in it.”`,
         choices: [
-          { text: "Play again and try a different path.", next: "start" }
+          { text: "Hold onto this new, fragile, beautiful beginning.", next: "epilogue_together" }
+        ]
+      },
+
+      epilogue_together: {
+        text:
+`The saga doesn’t end with the confession.
+It just changes shape.
+
+Some days are glowing and easy:
+video calls that last until one of them falls asleep,
+shared playlists titled “us”, photos of sunsets sent back and forth,
+Calvin always on screen with some new drink in hand.
+
+Some days are harder:
+missed calls, bad internet, exhaustion, quiet fears.
+
+But there is a steady thread through all of it—
+the choice, over and over, to show up for each other.
+
+Years from now, Calvin will still remember the color of the sky
+that first night he said “I’m in love with you, Saharsh,” 
+and heard “I’m in love with you too” in return.
+
+It won’t be the end.
+
+Just the first honest chapter of the rest of their lives.`,
+        choices: [
+          { text: "Rewind and live the saga again from the beginning.", next: "start" }
+        ]
+      },
+
+      epilogue_long_distance: {
+        text:
+`Distance redraws their world.
+
+Time zones become something they learn to navigate:
+a good-morning for one is a good-night for the other.
+Screens glow in dark rooms, each a small window into the other’s life.
+
+They build routines:
+weekly calls, random photos, “this made me think of you” messages.
+
+Calvin, of course, is always holding a mug or bottle in their calls;
+it becomes a running joke that you can track his mood by what he’s drinking.
+
+There are moments of ache, of missing the easy closeness of campus,
+but never again the ache of not knowing how the other feels.
+
+Years pass. Careers shift. Cities change.
+
+One day, an old chat thread lights up with a new message from Saharsh:
+“Coming back for a visit. Think you could meet me at the station?”`,
+        choices: [
+          { text: "Go to meet him, heart racing like the first time again.", next: "epilogue_reunion" },
+          { text: "Or rewind everything and choose new paths from the start.", next: "start" }
+        ]
+      },
+
+      epilogue_reunion: {
+        text:
+`The station is loud, all metallic echoes and rolling suitcases.
+
+Calvin stands by the arrivals board, coffee in hand out of sheer habit,
+palms still somehow sweaty,
+feeling seventeen and twenty-three and thirty all at once.
+
+Then he sees him.
+
+Older, a little, in the way people change around the eyes.
+Still entirely, unmistakably, wonderfully Saharsh.
+
+They walk toward each other, then run the last few steps.
+
+“I missed you,” Calvin breathes.
+
+“I missed you more,” Saharsh answers, pulling back just enough to look at him.
+“You know… I’m still in love with you.”
+
+Calvin laughs, relief and joy tangled together.
+
+“Good,” he says. “Because this saga? I’m not done living it with you.”`,
+        choices: [
+          { text: "Hold onto this ending that’s really just another beginning.", next: "epilogue_together" }
         ]
       }
     };
+
+    // Calvin's “always has liquid on him” running gag
+    const drinkLines = [
+      "As always, Calvin is carrying some kind of drink—water, coffee, tea—because he somehow never goes anywhere without liquid in his hand.",
+      "True to habit, Calvin has a bottle or cup of something to sip; if you know one thing about him, it's that he's never without a drink.",
+      "Somewhere nearby, Calvin’s ever-present drink sweats against his palm; he jokes that hydration is his whole personality."
+    ];
+
+    function addDrinkLine(baseText) {
+      const line = drinkLines[Math.floor(Math.random() * drinkLines.length)];
+      return line + "\n\n" + baseText;
+    }
 
     let step = 0;
 
@@ -441,38 +953,23 @@ Calvin was indeed very wet.
       const choicesEl = document.getElementById("choices");
       const statusEl = document.getElementById("status");
 
-      textEl.textContent = "";
-      // typewriter effect (simple)
-      const fullText = scene.text;
-      let i = 0;
-      const speed = 10; // ms per char
-
-      function type() {
-        if (i <= fullText.length) {
-          textEl.textContent = fullText.slice(0, i);
-          i++;
-          requestAnimationFrame(type);
-        }
-      }
-      type();
-
+      step++;
+      textEl.textContent = addDrinkLine(scene.text);
       choicesEl.innerHTML = "";
+
       scene.choices.forEach(choice => {
         const btn = document.createElement("button");
         btn.className = "choice";
         btn.textContent = choice.text;
-        btn.onclick = () => {
-          step++;
-          renderScene(choice.next);
-        };
+        btn.onclick = () => renderScene(choice.next);
         choicesEl.appendChild(btn);
       });
 
-      statusEl.textContent = `Step ${step}`;
+      statusEl.textContent = `Scenes visited this run: ${step}`;
     }
 
     function startGame() {
-      step = 1;
+      step = 0;
       renderScene("start");
     }
 
