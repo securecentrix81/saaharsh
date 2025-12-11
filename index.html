@@ -1,1 +1,29 @@
-<h1>This is Calvin Chang's funny page. I will put anything on here.</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fullscreen Image</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
+      overflow: hidden; 
+
+    img.fullscreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover; 
+    }
+  </style>
+</head>
+<body>
+  <img class="fullscreen" src="https://asset-cdn.schoology.com/system/files/imagecache/profile_big/pictures/picture-8da51c795b58d3caa607ac4523e97ee7_68c34ca3c96ab.jpg" alt="Fullscreen image" />
+</body>
+</html>
