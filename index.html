@@ -1,29 +1,473 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Fullscreen Image</title>
+  <meta charset="UTF-8">
+  <title>Calvin & Saharsh: The Confession</title>
   <style>
-    html, body {
+    :root {
+      color-scheme: light dark;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    body {
       margin: 0;
       padding: 0;
-      height: 100%;
+      background: radial-gradient(circle at top, #ffe6f2, #171721);
+      color: #fdfdfd;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-
-    body {
-      overflow: hidden; 
-
-    img.fullscreen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover; 
+    .game {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 16px;
+      max-width: 700px;
+      width: 90%;
+      padding: 24px 28px 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      backdrop-filter: blur(10px);
+    }
+    .title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      font-size: 0.9rem;
+      opacity: 0.75;
+      margin-bottom: 18px;
+    }
+    .scene-text {
+      white-space: pre-line;
+      line-height: 1.5;
+      margin-bottom: 18px;
+      font-size: 1rem;
+    }
+    .choices {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    button.choice {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      text-align: left;
+      background: rgba(255,255,255,0.12);
+      color: #fdfdfd;
+      transition: background 0.2s, transform 0.05s, box-shadow 0.1s;
+      box-shadow: 0 0 0 rgba(0,0,0,0);
+    }
+    button.choice:hover {
+      background: rgba(255,255,255,0.20);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transform: translateY(-1px);
+    }
+    button.choice:active {
+      transform: translateY(0);
+      box-shadow: 0 0 0 rgba(0,0,0,0);
+    }
+    .meta {
+      margin-top: 14px;
+      font-size: 0.8rem;
+      opacity: 0.7;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .restart {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.35);
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      font-size: 0.75rem;
+    }
+    .restart:hover {
+      background: rgba(255,255,255,0.12);
     }
   </style>
 </head>
 <body>
-  <img class="fullscreen" src="https://asset-cdn.schoology.com/system/files/imagecache/profile_big/pictures/picture-8da51c795b58d3caa607ac4523e97ee7_68c34ca3c96ab.jpg" alt="Fullscreen image" />
+  <div class="game">
+    <div class="title">Calvin & Saharsh</div>
+    <div class="subtitle">A tiny choose-your-own-love-story</div>
+    <div class="scene-text" id="text"></div>
+    <div class="choices" id="choices"></div>
+    <div class="meta">
+      <span id="status"></span>
+      <button class="restart" onclick="startGame()">Restart</button>
+    </div>
+  </div>
+
+  <script>
+    const story = {
+      start: {
+        text:
+`Calvin has known Saharsh for a while now.
+
+It started with small jokes in class, then long conversations online,
+and somewhere along the way Calvin realized:
+
+This isn’t just a friendship crush anymore.
+
+Tonight, Calvin has decided: *I’m going to tell Saharsh how I feel.*`,
+        choices: [
+          { text: "Plan a casual walk and confess then.", next: "walk_plan" },
+          { text: "Invite Saharsh for coffee after class.", next: "coffee_invite" },
+          { text: "Send a heartfelt message instead.", next: "text_plan" }
+        ]
+      },
+
+      walk_plan: {
+        text:
+`Calvin types:
+
+“Hey, want to go for a walk later? Need some fresh air after today 😅”
+
+Saharsh replies almost instantly:
+
+“Yeah, I’d like that. 7 pm?”`,
+        choices: [
+          { text: "Say yes and try to stay calm.", next: "walk_meet" },
+          { text: "Panic and try to reschedule.", next: "walk_reschedule" }
+        ]
+      },
+
+      walk_reschedule: {
+        text:
+`Calvin starts to type “Actually, can we–” and then stops.
+
+If he keeps delaying this, he might never say it.
+
+He deletes the message and simply replies:
+
+“7 works. See you then.”`,
+        choices: [
+          { text: "Take a deep breath and go to meet Saharsh.", next: "walk_meet" }
+        ]
+      },
+
+      walk_meet: {
+        text:
+`The sky is turning orange as Calvin meets Saharsh.
+
+They walk side by side, talking about random things:
+music, memes, and how fast time seems to be moving.
+
+There’s a comfortable silence.
+
+Calvin’s heart is racing.
+
+This is the moment.`,
+        choices: [
+          { text: "Be direct: “I like you. A lot.”", next: "confess_direct" },
+          { text: "Start soft: “Can I tell you something kind of scary?”", next: "confess_soft" }
+        ]
+      },
+
+      coffee_invite: {
+        text:
+`Calvin asks after class, trying to sound casual:
+
+“Hey, want to grab coffee? I could really use a break.”
+
+Saharsh smiles. “Sure, that actually sounds great.”`,
+        choices: [
+          { text: "Talk about memories first, then confess.", next: "coffee_memories" },
+          { text: "Just blurt it out over coffee.", next: "coffee_blurt" }
+        ]
+      },
+
+      coffee_memories: {
+        text:
+`They sit by the window, warm mugs between their hands.
+
+Calvin laughs. “Remember when we first talked? I thought you didn’t like me.”
+
+Saharsh shakes his head. “Are you kidding? I was just shy. You were the one who seemed cool.” 
+
+Calvin feels their courage growing.`,
+        choices: [
+          { text: "Turn the moment serious and confess.", next: "confess_soft" },
+          { text: "Say it playfully, like a joke… at first.", next: "confess_playful" }
+        ]
+      },
+
+      coffee_blurt: {
+        text:
+`The words come out before Calvin can overthink:
+
+“So, um… I like you. Like *really* like you. More than a friend.”
+
+There’s a heartbeat of silence.
+
+Then another.`,
+        choices: [
+          { text: "Wait, don’t say anything else. Just look at Saharsh.", next: "reaction_slow" },
+          { text: "Nervously ramble to fill the silence.", next: "ramble" }
+        ]
+      },
+
+      text_plan: {
+        text:
+`Calvin stares at the blank message screen.
+
+Typing is easier than talking… but also easier to overthink.
+
+He writes, deletes, rewrites. Eventually, a draft appears:`,
+        choices: [
+          { text: "Be simple and honest.", next: "text_simple" },
+          { text: "Be poetic and dramatic.", next: "text_poetic" }
+        ]
+      },
+
+      text_simple: {
+        text:
+`Calvin types:
+
+“I really value you, and I think I’ve started to like you as more than a friend.
+I’m scared to say this, but I’d regret never telling you.”
+
+Finger hovering over “Send”…`,
+        choices: [
+          { text: "Press send.", next: "sent_text" },
+          { text: "Change your mind and ask to meet in person instead.", next: "meet_instead" }
+        ]
+      },
+
+      text_poetic: {
+        text:
+`Calvin types:
+
+“Somewhere between our late-night talks and your terrible jokes,
+I realized my favorite part of the day is just… you.
+
+I like you. A lot.”
+
+It’s dramatic, but it’s true.`,
+        choices: [
+          { text: "Send it before you can overthink.", next: "sent_text" },
+          { text: "Save it and invite Saharsh to talk in person.", next: "meet_instead" }
+        ]
+      },
+
+      meet_instead: {
+        text:
+`Calvin deletes the message and smiles to himself.
+
+No more hiding behind screens.
+
+He messages instead:
+
+“Can we talk later? In person. I have something important to tell you.”`,
+        choices: [
+          { text: "Go meet and confess face to face.", next: "walk_meet" }
+        ]
+      },
+
+      sent_text: {
+        text:
+`Message sent.
+
+The typing indicator appears.
+Disappears.
+Appears again.
+
+Every second feels like an hour.
+
+Finally, a reply:`,
+        choices: [
+          { text: "Open it slowly, heart pounding.", next: "text_reply" }
+        ]
+      },
+
+      text_reply: {
+        text:
+`“Wow… I wasn’t expecting that.
+
+I really care about you too, Calvin.
+Can we talk about this in person? I think I might feel the same way.”`,
+        choices: [
+          { text: "Meet up and say it out loud this time.", next: "final_confession" }
+        ]
+      },
+
+      confess_direct: {
+        text:
+`Calvin takes a breath.
+
+“I like you, Saharsh. Not just as a friend. I’ve liked you for a while now.”`,
+        choices: [
+          { text: "Stand your ground and wait for a response.", next: "reaction_slow" }
+        ]
+      },
+
+      confess_soft: {
+        text:
+`Calvin’s voice is soft.
+
+“Can I tell you something kind of scary?”
+
+Saharsh looks over, curious. “Yeah. Of course.”
+
+“I… I’ve started to like you as more than a friend.”`,
+        choices: [
+          { text: "Watch Saharsh’s reaction.", next: "reaction_slow" }
+        ]
+      },
+
+      confess_playful: {
+        text:
+`Calvin chuckles nervously.
+
+“So, hypothetically, if I said I might be a little bit in love with you…
+like, just a tiny bit… what would you say?”`,
+        choices: [
+          { text: "Admit you’re not actually joking.", next: "reaction_playful" }
+        ]
+      },
+
+      ramble: {
+        text:
+`Words spill out.
+
+“I mean, if you don’t like me back it’s totally fine, we can pretend I never said anything—
+I just didn’t want to keep this secret and—” 
+
+“Calvin,” Saharsh interrupts gently.`,
+        choices: [
+          { text: "Go quiet and listen.", next: "reaction_slow" }
+        ]
+      },
+
+      reaction_slow: {
+        text:
+`For a moment, Saharsh just looks at Calvin.
+
+Then a small, nervous smile appears.
+
+“I had a feeling,” he says quietly. “I was kind of hoping I was right.”`,
+        choices: [
+          { text: "Ask, “What do you mean?”", next: "reaction_deepen" },
+          { text: "Stay silent and let him keep talking.", next: "reaction_deepen" }
+        ]
+      },
+
+      reaction_playful: {
+        text:
+`Saharsh laughs, a little too quickly.
+
+“Hypothetically? I’d say… that’s not really surprising.”
+
+Calvin meets his eyes. “It’s not hypothetical.”`,
+        choices: [
+          { text: "Wait for Saharsh to answer.", next: "reaction_deepen" }
+        ]
+      },
+
+      reaction_deepen: {
+        text:
+`Saharsh takes a breath.
+
+“Calvin… I like you too. I’ve been scared to say anything.
+
+You mean a lot to me. More than just ‘friend a lot’.”`,
+        choices: [
+          { text: "Smile in relief and confess clearly one more time.", next: "final_confession" }
+        ]
+      },
+
+      final_confession: {
+        text:
+`Everything slows down for a moment.
+
+Calvin’s voice is steady now.
+
+“Okay, then… let me say it properly.
+
+I’m in love with you, Saharsh.” 
+
+Saharsh’s eyes soften.
+
+“Good,” he whispers, smiling. “Because I’m in love with you too.” 
+
+The world outside keeps moving—cars, people, time—
+but for a little while, it feels like it’s just the two of them,
+hearts finally speaking the same language.`,
+        choices: [
+          { text: "Stay together a little longer in this moment.", next: "epilogue" }
+        ]
+      },
+
+      epilogue: {
+        text:
+`Later, when Calvin looks back, he won’t remember every word.
+
+He’ll remember the way Saharsh looked at him.
+The warmth in his chest.
+The quiet relief of being fully seen and still chosen.
+
+No matter which path led here,
+they found their way to each other.
+
+— The End —`,
+        choices: [
+          { text: "Play again and try a different path.", next: "start" }
+        ]
+      }
+    };
+
+    let step = 0;
+
+    function renderScene(id) {
+      const scene = story[id];
+      if (!scene) return;
+
+      const textEl = document.getElementById("text");
+      const choicesEl = document.getElementById("choices");
+      const statusEl = document.getElementById("status");
+
+      textEl.textContent = "";
+      // typewriter effect (simple)
+      const fullText = scene.text;
+      let i = 0;
+      const speed = 10; // ms per char
+
+      function type() {
+        if (i <= fullText.length) {
+          textEl.textContent = fullText.slice(0, i);
+          i++;
+          requestAnimationFrame(type);
+        }
+      }
+      type();
+
+      choicesEl.innerHTML = "";
+      scene.choices.forEach(choice => {
+        const btn = document.createElement("button");
+        btn.className = "choice";
+        btn.textContent = choice.text;
+        btn.onclick = () => {
+          step++;
+          renderScene(choice.next);
+        };
+        choicesEl.appendChild(btn);
+      });
+
+      statusEl.textContent = `Step ${step}`;
+    }
+
+    function startGame() {
+      step = 1;
+      renderScene("start");
+    }
+
+    // Start automatically
+    startGame();
+  </script>
 </body>
 </html>
